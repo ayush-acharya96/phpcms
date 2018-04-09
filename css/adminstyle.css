@@ -1,0 +1,38 @@
+.navbar-nav li {
+    font-weight: bold;
+    font-family: Bitter, Georgia, Times, "Times New Roman", serif;
+    font-size: 1.2em;
+}
+
+.Line {
+    margin-top: -20px;
+}
+
+body{
+    background-color: #00695C;
+}
+.col-sm-10 {
+    background-color: #ffffff;
+}
+#side_menu a{
+    color: #ffffff;
+
+}
+#side_menu .active a{
+    color: #ffffff;
+    background-color: #00897B;
+    font-weight: bold;
+}
+#side_menu a:hover{
+    color: #ffffff;
+    background-color: #26A69A;
+    font-weight: bold;
+    display: block;
+}
+#Footer {
+    padding: 10px;
+    border-top: 1px solid black;
+    color: #eeeeee;
+    background-color: #004D40;
+    text-align: center;
+}

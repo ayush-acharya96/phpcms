@@ -27,15 +27,15 @@ if(isset($_POST["Submit"])){
         $_SESSION["ErrorMessage"] = "Passwords donot match";
     } else {
         global $ConnectingDB;
-        $Query = "INSERT INTO registration(datetime,name,)
-                  VALUES('$DateTime','$Category','$Admin')";
+        $Query = "INSERT INTO registration(datetime,username,password,addedby)
+                  VALUES('$DateTime','$Username','$Password','$Admin')";
         $Execute = mysql_query($Query);
         if($Execute) {
-            $_SESSION["SuccessMessage"] = "Category added successfully.";
-            Redirect_to("Categories.php");
+            $_SESSION["SuccessMessage"] = "Admin added successfully.";
+            Redirect_to("Admins.php");
         } else {
-            $_SESSION["ErrorMessage"] = "Category failed to add.";
-            Redirect_to("Categories.php");
+            $_SESSION["ErrorMessage"] = "Failed to add admin.";
+            Redirect_to("Admins.php");
         }
     }
 }
@@ -121,29 +121,29 @@ if(isset($_POST["Submit"])){
                     <tr>
                         <th>Sr. No</th>
                         <th>Date & Time</th>
-                        <th>Category Name</th>
-                        <th>Creator Name</th>
+                        <th>Admins</th>
+                        <th>Added BY</th>
                         <th>Action</th>
                     </tr>
                     <?php
                         global $ConnectingDB;
-                        $ViewQuery = "SELECT * FROM category ORDER BY datetime DESC ";
+                        $ViewQuery = "SELECT * FROM registration ORDER BY datetime DESC ";
                         $Execute = mysql_query($ViewQuery);
                         $SrNo = 0;
                         while($DataRows = mysql_fetch_array($Execute)) {
                             $Id = $DataRows["id"];
                             $DateTime = $DataRows["datetime"];
-                            $CategoryName = $DataRows["name"];
-                            $CreatorName = $DataRows["creatorname"];
+                            $UserName = $DataRows["username"];
+                            $AddedBy = $DataRows["addedby"];
                             $SrNo++;
 
                     ?>
                     <tr>
                         <td><?php echo $SrNo; ?></td>
                         <td><?php echo $DateTime; ?></td>
-                        <td><?php echo $CategoryName; ?></td>
-                        <td><?php echo $CreatorName; ?></td>
-                        <td><a href="DeleteCategory.php?id=<?php echo $Id; ?>"><span class="btn btn-danger">Delete</span></a></td>
+                        <td><?php echo $UserName; ?></td>
+                        <td><?php echo $AddedBy; ?></td>
+                        <td><a href="DeleteAdmin.php?id=<?php echo $Id; ?>"><span class="btn btn-danger">Delete</span></a></td>
                     </tr>
                     <?php } ?>
                 </table>
